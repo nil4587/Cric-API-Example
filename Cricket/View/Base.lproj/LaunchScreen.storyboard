@@ -19,9 +19,9 @@
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" image="Cricket-Wallpaper" translatesAutoresizingMaskIntoConstraints="NO" id="0Dh-ps-BW1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.97799509763717651" green="0.96472388505935669" blue="0.92058783769607544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.969349205493927" green="0.9418761134147644" blue="0.86974084377288818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Applogo" translatesAutoresizingMaskIntoConstraints="NO" id="iNg-8c-zh1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Applogo" translatesAutoresizingMaskIntoConstraints="NO" id="iNg-8c-zh1">
                                 <rect key="frame" x="121.5" y="65" width="132" height="132"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="132" id="HHT-bf-uUE"/>
