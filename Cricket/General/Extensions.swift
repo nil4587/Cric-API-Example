@@ -38,6 +38,7 @@ extension UIView {
     var isPortrait: Bool { return width < height }
     var isLandscape: Bool { return width > height }
     
+    // To set border color directly through storyboard or .XIB
     @IBInspectable var borderColor: UIColor? {
         get {
             return layer.borderColor.map { UIColor(cgColor: $0) }
@@ -47,6 +48,7 @@ extension UIView {
         }
     }
     
+    // To set border width directly through storyboard or .XIB
     @IBInspectable var borderWidth: CGFloat {
         get {
             return layer.borderWidth
@@ -56,6 +58,7 @@ extension UIView {
         }
     }
     
+    // To set corner radius directly through storyboard or .XIB
     @IBInspectable var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
@@ -65,11 +68,60 @@ extension UIView {
             layer.masksToBounds = newValue > 0
         }
     }
+}
 
-    func showDropShadow() {
-        self.layer.masksToBounds = false
-        self.layer.shadowColor = UIColor.gray.cgColor
-        self.layer.shadowOffset = CGSize(width: 0.0, height: 0.3)
-        self.layer.shadowOpacity = 0.3
+// MARK: - ================================
+// MARK: UIImageView
+// MARK: ================================
+
+extension UIImageView {
+
+    // A method to load image from either cache or web-server
+    func loadImage(fromURL url: String) {
+        guard let imageURL = URL(string: url) else {
+            self.transition(toImage: #imageLiteral(resourceName: "cricket_avtar"))
+            return
+        }
+        
+        let cache =  URLCache.shared
+        let request = URLRequest(url: imageURL)
+        DispatchQueue.global(qos: .userInteractive).async {
+            if let data = cache.cachedResponse(for: request)?.data, let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    self.transition(toImage: image)
+                }
+            } else {
+                self.getData(from: imageURL) { data, response, error in
+                    guard let data = data, error == nil else {
+                        DispatchQueue.main.async() {
+                            self.transition(toImage: #imageLiteral(resourceName: "cricket_avtar"))
+                        }
+                        return
+                    }
+                    #if DEBUG
+                    print("Download Finished")
+                    #endif
+                    DispatchQueue.main.async() {
+                        let image = UIImage(data: data)
+                        self.transition(toImage: image)
+                    }
+                }
+            }
+        }
+    }
+    
+    // A method to make view transition at the time of assigning image
+    public func transition(toImage image: UIImage?) {
+        UIView.transition(with: self, duration: 0.3,
+                          options: [.transitionCrossDissolve],
+                          animations: {
+                            self.image = image
+        },
+                          completion: nil)
+    }
+    
+    // A web-service method to fetch data from the server
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 }

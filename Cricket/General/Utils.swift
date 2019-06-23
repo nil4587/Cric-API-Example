@@ -53,10 +53,7 @@ func displayAlert(_ title: String, message: String, completion:((_ index: Int) -
     }
 }
 
-func displayAlert(_ title: String, message: String) {
+// A method to display an alert with title
+func displayAlert(_ title: String = AppInfo.title , message: String) {
     displayAlert(title, message: message, completion: nil)
-}
-
-func displayAlert(_ message: String) {
-    displayAlert(AppInfo.title, message: message)
 }

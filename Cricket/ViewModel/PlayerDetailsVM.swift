@@ -11,11 +11,10 @@ import UIKit
 
 class PlayerDetailsVM {
     var objPlayer: Player?
-    var objPlayerDetails: PlayerDetails? {
-        didSet {
-            reloadView!()
-        }
-    }
+    var userimagepath: String?
+    var arrPlayerProfile: [[String: String]]?
+    var arrBowling: [[String: String]]?
+    var arrBatting: [[String: String]]?
     var reloadView: (() -> ())?
     
     // MARK: - ================================
@@ -25,18 +24,23 @@ class PlayerDetailsVM {
     func callWebServiceToFetchPlayerDetais() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         WebAPIManager.sharedWebAPIManager.callWebServiceToFetchDetailsFor(module: .PlayerStatistics, queryparam: String(format: "%d", objPlayer?.pid?.intValue ?? 0)) {[weak self] (success, error, data) in
-            if success, let byteData = data {
+            if success, let byteData = data, byteData.count > 0 {
                 do {
                     let decoder = JSONDecoder()
-                    self?.objPlayerDetails = try decoder.decode(PlayerDetails.self, from: byteData)
+                    let objPlayerDetails = try decoder.decode(PlayerDetails.self, from: byteData)
+                    self?.arrPlayerProfile = objPlayerDetails.returnPlayerInfo()
+                    self?.userimagepath = objPlayerDetails.imageurl
+                    self?.arrBowling = objPlayerDetails.statistics?.returnBowlingInfo()
+                    self?.arrBatting = objPlayerDetails.statistics?.returnBattingInfo()
+                    self?.reloadView!()
                 } catch {
-                    displayAlert("An error occurred while decoding data due to \(error.localizedDescription)")
+                    displayAlert(message: "An error occurred while decoding data due to \(error.localizedDescription)")
                 }
             } else {
                 if let errormessage = error {
-                    displayAlert(errormessage)
+                    displayAlert(message: errormessage)
                 } else {
-                    displayAlert("Something went wrong!!")
+                    displayAlert(message: "Something went wrong. Please try again!!")
                 }
             }
             DispatchQueue.main.async(execute: {
@@ -44,9 +48,14 @@ class PlayerDetailsVM {
             })
         }
     }
-    
+        
     deinit {
         objPlayer = nil
-        objPlayerDetails = nil
+        arrPlayerProfile?.removeAll()
+        arrPlayerProfile = nil
+        arrBowling?.removeAll()
+        arrBowling = nil
+        arrBatting?.removeAll()
+        arrBatting = nil
     }
 }

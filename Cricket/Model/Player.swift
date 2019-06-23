@@ -8,6 +8,10 @@
 
 import Foundation
 
+// MARK: - ================================
+// MARK: An object for Player's informations
+// MARK: ================================
+
 struct Player: Codable {
     var fname: String?
     var name: String?

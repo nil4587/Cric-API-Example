@@ -8,6 +8,10 @@
 
 import Foundation
 
+// MARK: - ================================
+// MARK: Provider information for a specific 'Player Finder'
+// MARK: ================================
+
 struct Provider: Codable {
     var pubDate: String?
     var url: String?
@@ -39,6 +43,10 @@ struct Provider: Codable {
         }
     }
 }
+
+// MARK: - ================================
+// MARK: Player Finder with multiple players informations
+// MARK: ================================
 
 struct PlayerFinder: Codable {
     var ttl: NSNumber?

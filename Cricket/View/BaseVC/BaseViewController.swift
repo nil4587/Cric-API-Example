@@ -12,11 +12,11 @@ class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        // Override any task here
+        // Write common functionality based on conditional separation here 
     }
     
-
     /*
     // MARK: - Navigation
 

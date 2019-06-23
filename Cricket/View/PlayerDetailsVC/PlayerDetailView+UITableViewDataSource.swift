@@ -15,7 +15,7 @@ import UIKit
 
 extension PlayerDetailsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        if playerDetailVM.objPlayerDetails == nil {
+        if playerDetailVM.arrPlayerProfile == nil || playerDetailVM.arrPlayerProfile?.count == 0 {
             return 0
         } else {
             return 3
@@ -24,9 +24,11 @@ extension PlayerDetailsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 9
+            return playerDetailVM.arrPlayerProfile?.count ?? 0
+        } else if section == 1 {
+            return playerDetailVM.arrBowling?.count ?? 0
         } else {
-            return 5
+            return playerDetailVM.arrBatting?.count ?? 0
         }
     }
     
@@ -69,82 +71,19 @@ extension PlayerDetailsViewController: UITableViewDataSource {
             }
             cell?.selectionStyle = .none
         }
+        var dictInfo: [String: String]?
         if indexPath.section == 0 {
             // Biography section
-            switch indexPath.row {
-            case 0:
-                cell?.textLabel?.text = Constants.AppKeys.fullname
-                cell?.detailTextLabel?.text = playerDetailVM.objPlayerDetails?.fname ?? "N/A"
-            case 1:
-                cell?.textLabel?.text = Constants.AppKeys.born
-                cell?.detailTextLabel?.text = playerDetailVM.objPlayerDetails?.born ?? "N/A"
-            case 2:
-                cell?.textLabel?.text = Constants.AppKeys.age
-                cell?.detailTextLabel?.text = playerDetailVM.objPlayerDetails?.age ?? "N/A"
-            case 3:
-                cell?.textLabel?.text = Constants.AppKeys.country
-                cell?.detailTextLabel?.text = playerDetailVM.objPlayerDetails?.country ?? "N/A"
-            case 4:
-                cell?.textLabel?.text = Constants.AppKeys.role
-                cell?.detailTextLabel?.text = playerDetailVM.objPlayerDetails?.role ?? "N/A"
-            case 5:
-                cell?.textLabel?.text = Constants.AppKeys.battingstyle
-                cell?.detailTextLabel?.text = playerDetailVM.objPlayerDetails?.battingStyle ?? "N/A"
-            case 6:
-                cell?.textLabel?.text = Constants.AppKeys.bowlingstyle
-                cell?.detailTextLabel?.text = playerDetailVM.objPlayerDetails?.bowlingStyle ?? "N/A"
-            case 7:
-                cell?.textLabel?.text = Constants.AppKeys.majorteams
-                cell?.detailTextLabel?.text = playerDetailVM.objPlayerDetails?.majorTeams ?? "N/A"
-            case 8:
-                cell?.textLabel?.text = Constants.AppKeys.profile
-                cell?.detailTextLabel?.text = playerDetailVM.objPlayerDetails?.profile?.trimmedString ?? "N/A"
-            default:
-                break
-            }
+            dictInfo = playerDetailVM.arrPlayerProfile?[indexPath.row]
         } else if indexPath.section == 1 {
             // Bowling Info section
-            switch indexPath.row {
-            case 0:
-                cell?.textLabel?.text = Constants.AppKeys.listA
-                cell?.detailTextLabel?.text = playerDetailVM.objPlayerDetails?.statistics?.bowling?.listA?.returnBowlingInfo() ?? "N/A"
-            case 1:
-                cell?.textLabel?.text = Constants.AppKeys.first_class
-                cell?.detailTextLabel?.text = playerDetailVM.objPlayerDetails?.statistics?.bowling?.firstClass?.returnBowlingInfo() ?? "N/A"
-            case 2:
-                cell?.textLabel?.text = Constants.AppKeys.t20s
-                cell?.detailTextLabel?.text = playerDetailVM.objPlayerDetails?.statistics?.bowling?.t20IS?.returnBowlingInfo() ?? "N/A"
-            case 3:
-                cell?.textLabel?.text = Constants.AppKeys.odis
-                cell?.detailTextLabel?.text = playerDetailVM.objPlayerDetails?.statistics?.bowling?.odis?.returnBowlingInfo() ?? "N/A"
-            case 4:
-                cell?.textLabel?.text = Constants.AppKeys.test
-                cell?.detailTextLabel?.text = playerDetailVM.objPlayerDetails?.statistics?.bowling?.tests?.returnBowlingInfo() ?? "N/A"
-            default:
-                break
-            }
+            dictInfo = playerDetailVM.arrBowling?[indexPath.row]
         } else {
             // Batting Info section
-            switch indexPath.row {
-            case 0:
-                cell?.textLabel?.text = Constants.AppKeys.listA
-                cell?.detailTextLabel?.text = playerDetailVM.objPlayerDetails?.statistics?.batting?.listA?.returnBattingInfo() ?? "N/A"
-            case 1:
-                cell?.textLabel?.text = Constants.AppKeys.first_class
-                cell?.detailTextLabel?.text = playerDetailVM.objPlayerDetails?.statistics?.batting?.firstClass?.returnBattingInfo() ?? "N/A"
-            case 2:
-                cell?.textLabel?.text = Constants.AppKeys.t20s
-                cell?.detailTextLabel?.text = playerDetailVM.objPlayerDetails?.statistics?.batting?.t20IS?.returnBattingInfo() ?? "N/A"
-            case 3:
-                cell?.textLabel?.text = Constants.AppKeys.odis
-                cell?.detailTextLabel?.text = playerDetailVM.objPlayerDetails?.statistics?.batting?.odis?.returnBattingInfo() ?? "N/A"
-            case 4:
-                cell?.textLabel?.text = Constants.AppKeys.test
-                cell?.detailTextLabel?.text = playerDetailVM.objPlayerDetails?.statistics?.batting?.tests?.returnBattingInfo() ?? "N/A"
-            default:
-                break
-            }
+            dictInfo = playerDetailVM.arrBatting?[indexPath.row]
         }
+        cell?.textLabel?.text = dictInfo?.keys.first
+        cell?.detailTextLabel?.text = dictInfo?.values.first
         return cell!
     }
 }

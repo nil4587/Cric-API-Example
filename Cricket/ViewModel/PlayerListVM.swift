@@ -21,7 +21,7 @@ class PlayerListVM {
     var reloadTable: (() -> ())?
     
     init() {
-        operationQueue.maxConcurrentOperationCount = 10
+        operationQueue.maxConcurrentOperationCount = 1
         operationQueue.qualityOfService = .userInteractive
     }
     
@@ -39,7 +39,7 @@ class PlayerListVM {
                 }
                 operationQueue.addOperation(operation)
             } else {
-                objPlayerFinder = nil
+                clearPlayerInfo()
             }
         }
     }
@@ -53,26 +53,32 @@ class PlayerListVM {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
         })
         WebAPIManager.sharedWebAPIManager.callWebServiceToFetchDetailsFor(module: .PlayerFinder, queryparam: searchtext) { [weak self] (success, error, data) in
-            if success, let byteData = data {
+            if success, let byteData = data, byteData.count > 0 {
                 if let count = self?.searchText?.count, count > 0 {
                     do {
                         let decoder = JSONDecoder()
                         self?.objPlayerFinder = try decoder.decode(PlayerFinder.self, from: byteData)
                     } catch {
                         print(error.localizedDescription)
-                        self?.objPlayerFinder = nil
+                        self?.clearPlayerInfo()
                     }
                 } else {
-                    self?.objPlayerFinder = nil
+                    self?.clearPlayerInfo()
                 }
             } else {
-                self?.objPlayerFinder = nil
+                self?.clearPlayerInfo()
                 print(error as Any)
             }
             DispatchQueue.main.async(execute: {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             })
         }
+    }
+    
+    private func clearPlayerInfo() {
+        self.objPlayerFinder?.players?.removeAll()
+        self.objPlayerFinder?.players = nil
+        self.objPlayerFinder = nil
     }
     
     deinit {

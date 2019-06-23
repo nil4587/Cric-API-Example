@@ -24,7 +24,15 @@ import Foundation
  "Mat": "551"
  */
 
-struct BowlingInfo: Codable {
+// MARK: - ================================
+// MARK: Bowling details
+// MARK: ================================
+
+protocol BowlingInfoProtocol {
+    func returnBowlingInfo() -> String
+}
+
+struct BowlingInfo: Codable, BowlingInfoProtocol {
     var ten: String?
     var fiveW: String?
     var fourW: String?
@@ -119,6 +127,10 @@ struct BowlingInfo: Codable {
         return information
     }
 }
+
+// MARK: - ================================
+// MARK: Bowling in different formats
+// MARK: ================================
 
 /*
  listA

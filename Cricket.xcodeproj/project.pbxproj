@@ -111,6 +111,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C43D29E822BF739F00DF6BD0 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				C45E595822B9354D00DC23C5 /* Cricket-Bridging-Header.h */,
+				C45E595A22B9354E00DC23C5 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
 		C45E594F22B934E300DC23C5 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,8 +165,6 @@
 		C4D4B0CC22BA9A680060DC00 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				C45E595A22B9354E00DC23C5 /* AppDelegate.swift */,
-				C45E595822B9354D00DC23C5 /* Cricket-Bridging-Header.h */,
 				C4D4B0D422BA9C5E0060DC00 /* WebAPIManager.swift */,
 				C4D4B0CD22BA9A890060DC00 /* Structures.swift */,
 				C4D4B0CF22BA9AA20060DC00 /* Enumerations.swift */,
@@ -218,6 +225,7 @@
 		C4DB236F22B9115400B43D7E /* Cricket */ = {
 			isa = PBXGroup;
 			children = (
+				C43D29E822BF739F00DF6BD0 /* AppDelegate */,
 				C45E595622B9350200DC23C5 /* Model */,
 				C45E594F22B934E300DC23C5 /* View */,
 				C45E595722B9350E00DC23C5 /* ViewModel */,
@@ -583,7 +591,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.saturn.Cricket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Cricket/General/Cricket-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Cricket/AppDelegate/Cricket-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -606,7 +614,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.saturn.Cricket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Cricket/General/Cricket-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Cricket/AppDelegate/Cricket-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

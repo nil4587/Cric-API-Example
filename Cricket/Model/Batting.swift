@@ -25,6 +25,14 @@ import Foundation
  "Mat": "551"
  */
 
+// MARK: - ================================
+// MARK: Batting details
+// MARK: ================================
+
+protocol BattingInfoProtocol {
+    func returnBattingInfo() -> String
+}
+
 struct BattingInfo: Codable {
     var fifty: String?
     var hundreds: String?
@@ -32,12 +40,12 @@ struct BattingInfo: Codable {
     var ct: String?
     var sixers: String?
     var boundary: String?
-    var sr: String?
     var bf: String?
-    var average: String?
     var highestrun: String?
-    var runs: String?
     var no: String?
+    var sr: String?
+    var average: String?
+    var runs: String?
     var innings: String?
     var matches: String?
     
@@ -48,12 +56,12 @@ struct BattingInfo: Codable {
         case ct = "Ct"
         case sixers = "6s"
         case boundary = "4s"
-        case sr = "SR"
         case bf = "BF"
-        case average = "Ave"
         case highestrun = "HS"
-        case runs = "Runs"
         case no = "NO"
+        case sr = "SR"
+        case average = "Ave"
+        case runs = "Runs"
         case innings = "Inns"
         case matches = "Mat"
     }
@@ -124,6 +132,10 @@ struct BattingInfo: Codable {
         return information
     }
 }
+
+// MARK: - ================================
+// MARK: Bowling in different formats
+// MARK: ================================
 
 /*
  listA

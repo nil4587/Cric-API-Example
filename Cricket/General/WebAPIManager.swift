@@ -29,7 +29,7 @@ class WebAPIManager: NSObject {
         } else {
             fullweburl = String(format: "%@/%@?%@=%@&pid=%@", fullweburl,module.returnAPIModuleName(), Constants.AppKeys.api_key_title, WebService.webapi_key, queryparam)
         }
-        
+        fullweburl = fullweburl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         let requestUrl = URL(string: fullweburl)
         guard requestUrl != nil else {
             completionHandler(false, "Invalid request url", nil)

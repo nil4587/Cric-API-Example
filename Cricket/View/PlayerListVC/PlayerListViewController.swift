@@ -8,10 +8,10 @@
 
 import UIKit
 
-class PlayerListViewController: BaseViewController {
+final class PlayerListViewController: BaseViewController {
 
-    @IBOutlet weak var tblView: UITableView!
-    @IBOutlet weak var searchbar: UISearchBar!
+    @IBOutlet weak private var tblView: UITableView!
+    @IBOutlet weak private var searchbar: UISearchBar!
 
     let playerListVM = PlayerListVM()
     

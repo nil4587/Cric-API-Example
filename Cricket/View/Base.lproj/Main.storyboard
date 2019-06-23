@@ -94,21 +94,11 @@
                                     <constraint firstAttribute="width" secondItem="txt-3G-8s7" secondAttribute="height" multiplier="16:12" id="VtK-8p-JYc"/>
                                 </constraints>
                             </imageView>
-                            <activityIndicatorView hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="eDd-j7-cYu">
-                                <rect key="frame" x="169" y="186" width="37" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="gYk-Rx-vcr"/>
-                                    <constraint firstAttribute="width" constant="37" id="knB-lU-sHi"/>
-                                </constraints>
-                                <color key="color" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LH0-gD-AxH" firstAttribute="bottom" secondItem="S1s-Ma-7ev" secondAttribute="bottom" id="2SR-NB-x0r"/>
                             <constraint firstItem="txt-3G-8s7" firstAttribute="top" secondItem="S1s-Ma-7ev" secondAttribute="top" id="AZ3-02-L6v"/>
-                            <constraint firstItem="eDd-j7-cYu" firstAttribute="centerX" secondItem="Vl6-fD-9lc" secondAttribute="centerX" id="L4H-i0-ivz"/>
-                            <constraint firstItem="eDd-j7-cYu" firstAttribute="centerY" secondItem="txt-3G-8s7" secondAttribute="centerY" id="Lfu-aj-fW1"/>
                             <constraint firstItem="txt-3G-8s7" firstAttribute="leading" secondItem="S1s-Ma-7ev" secondAttribute="leading" id="MQ8-C0-1am"/>
                             <constraint firstItem="LH0-gD-AxH" firstAttribute="trailing" secondItem="S1s-Ma-7ev" secondAttribute="trailing" id="jCW-K9-jS7"/>
                             <constraint firstItem="LH0-gD-AxH" firstAttribute="leading" secondItem="S1s-Ma-7ev" secondAttribute="leading" id="jd4-Sl-zEQ"/>
@@ -118,7 +108,6 @@
                         <viewLayoutGuide key="safeArea" id="S1s-Ma-7ev"/>
                     </view>
                     <connections>
-                        <outlet property="loadingIndicator" destination="eDd-j7-cYu" id="LCz-tC-CA2"/>
                         <outlet property="tblView" destination="LH0-gD-AxH" id="WY9-v3-eD6"/>
                         <outlet property="userImgView" destination="txt-3G-8s7" id="VdQ-cI-P41"/>
                     </connections>

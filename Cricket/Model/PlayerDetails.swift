@@ -22,7 +22,16 @@ import Foundation
 "playingRole": "Top-order batsman",
 */
 
-struct PlayerStatistics: Codable {
+// MARK: - ================================
+// MARK: Player statistics
+// MARK: ================================
+
+protocol PlayerStatisticsProtocol {
+    func returnBowlingInfo() -> [[String: String]]
+    func returnBattingInfo() -> [[String: String]]
+}
+
+struct PlayerStatistics: Codable, PlayerStatisticsProtocol {
     var bowling: Bowling?
     var batting: Batting?
     
@@ -52,9 +61,37 @@ struct PlayerStatistics: Codable {
             throw error
         }
     }
+    
+    func returnBowlingInfo() -> [[String: String]] {
+        var arrBowling: [[String: String]] = []
+        arrBowling.append([Constants.AppKeys.listA: self.bowling?.listA?.returnBowlingInfo() ?? "N/A"])
+        arrBowling.append([Constants.AppKeys.first_class: self.bowling?.firstClass?.returnBowlingInfo() ?? "N/A"])
+        arrBowling.append([Constants.AppKeys.t20s: self.bowling?.t20IS?.returnBowlingInfo() ?? "N/A"])
+        arrBowling.append([Constants.AppKeys.odis: self.bowling?.odis?.returnBowlingInfo() ?? "N/A"])
+        arrBowling.append([Constants.AppKeys.test: self.bowling?.tests?.returnBowlingInfo() ?? "N/A"])
+        return arrBowling
+    }
+    
+    func returnBattingInfo() -> [[String: String]] {
+        var arrBatting: [[String: String]] = []
+        arrBatting.append([Constants.AppKeys.listA: self.batting?.listA?.returnBattingInfo() ?? "N/A"])
+        arrBatting.append([Constants.AppKeys.first_class: self.batting?.firstClass?.returnBattingInfo() ?? "N/A"])
+        arrBatting.append([Constants.AppKeys.t20s: self.batting?.t20IS?.returnBattingInfo() ?? "N/A"])
+        arrBatting.append([Constants.AppKeys.odis: self.batting?.odis?.returnBattingInfo() ?? "N/A"])
+        arrBatting.append([Constants.AppKeys.test: self.batting?.tests?.returnBattingInfo() ?? "N/A"])
+        return arrBatting
+    }
 }
 
-struct PlayerDetails: Codable {
+// MARK: - ================================
+// MARK: Player details
+// MARK: ================================
+
+protocol PlayerDetailProtocol {
+    func returnPlayerInfo() -> [[String: String]]
+}
+
+struct PlayerDetails: Codable, PlayerDetailProtocol {
     var pid: NSNumber?
     var profile: String?
     var imageurl: String?
@@ -129,5 +166,19 @@ struct PlayerDetails: Codable {
             print("An error occurred at Player Details decoding due to \(error.localizedDescription)")
             throw error
         }
+    }
+    
+    func returnPlayerInfo() -> [[String: String]] {
+        var arrProfile: [[String: String]] = []
+        arrProfile.append([Constants.AppKeys.fullname: fname ?? "N/A"])
+        arrProfile.append([Constants.AppKeys.born: born ?? "N/A"])
+        arrProfile.append([Constants.AppKeys.age: age ?? "N/A"])
+        arrProfile.append([Constants.AppKeys.country: country ?? "N/A"])
+        arrProfile.append([Constants.AppKeys.role: role ?? "N/A"])
+        arrProfile.append([Constants.AppKeys.bowlingstyle: bowlingStyle ?? "N/A"])
+        arrProfile.append([Constants.AppKeys.battingstyle: battingStyle ?? "N/A"])
+        arrProfile.append([Constants.AppKeys.majorteams: majorTeams ?? "N/A"])
+        arrProfile.append([Constants.AppKeys.profile: profile ?? "N/A"])
+        return arrProfile
     }
 }
