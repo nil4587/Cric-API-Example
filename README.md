@@ -14,10 +14,11 @@ The Ultimate Cricket API : A demo application for searching player by name and a
 
 # Player's details:
 
-<b> 1. Virat Kohli : </b>
+<b> 1. Sachin Tendulkar : </b>
+
+<img src="https://user-images.githubusercontent.com/3828906/59974533-f651d000-95ca-11e9-8040-e82de2c50fe5.png" width=375 height=667>
+
+<b> 2. Virat Kohli : </b>
 
 <img src="https://user-images.githubusercontent.com/3828906/59974423-bfc78580-95c9-11e9-9abc-65bfc3286547.png" width=375 height=667>
 
-<b> 2. Sachin Tendulkar : </b>
-
-<img src="https://user-images.githubusercontent.com/3828906/59974533-f651d000-95ca-11e9-8040-e82de2c50fe5.png" width=375 height=667>
