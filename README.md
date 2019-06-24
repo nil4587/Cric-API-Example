@@ -22,3 +22,8 @@ The Ultimate Cricket API : A demo application for searching player by name and a
 
 <img src="https://user-images.githubusercontent.com/3828906/59974423-bfc78580-95c9-11e9-9abc-65bfc3286547.png" width=375 height=667>
 
+# Tools & Technologies :
+XCode Version: 10.1,</br>
+Swift Version : 4.2,</br>
+Minimum Deployment Version : iOS 12.0,</br>
+Architecture : MVVM</br>
