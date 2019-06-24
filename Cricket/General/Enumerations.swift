@@ -8,11 +8,13 @@
 
 import Foundation
 
+// Server response code
 enum APIResponseCode: Int {
     case success = 200
     case servererror = 500
 }
 
+// API Module
 enum APIModule: Int8 {
     case PlayerFinder
     case PlayerStatistics

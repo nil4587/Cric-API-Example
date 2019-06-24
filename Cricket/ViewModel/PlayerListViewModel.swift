@@ -9,10 +9,10 @@
 import Foundation
 import  UIKit
 
-class PlayerListVM {
+class PlayerListViewModel {
     let operationQueue = OperationQueue()
-    // An object to parse & map players data into a model
-    var objPlayerFinder: PlayerFinder? {
+    // A list to parse & map players data into a list of models
+    var players: [Player]? {
         didSet {
             reloadTable!()
         }
@@ -22,7 +22,7 @@ class PlayerListVM {
     
     init() {
         operationQueue.maxConcurrentOperationCount = 1
-        operationQueue.qualityOfService = .userInteractive
+        operationQueue.qualityOfService = .userInitiated
     }
     
     // Search text parameter to get players data from web-service
@@ -30,16 +30,16 @@ class PlayerListVM {
         didSet {
             operationQueue.cancelAllOperations()
             // Check length of searchable input prior making a call to server
-            if let length = searchText?.trimmedString.length, length > 0 {
+            if let searchText = searchText?.trimmedString, searchText.length > 0 {
                 let operation = Operation()
-                operation.qualityOfService = .userInteractive
+                operation.qualityOfService = .userInitiated
                 operation.queuePriority = .veryHigh
-                operation.completionBlock = {
-                    self.callWebServiceToFetchPlayerList(searchtext: self.searchText!)
+                operation.completionBlock = { [weak self] in
+                    self?.fetchPlayerListBasedOn(inputText: searchText)
                 }
                 operationQueue.addOperation(operation)
             } else {
-                clearPlayerInfo()
+                clearPlayers()
             }
         }
     }
@@ -48,26 +48,31 @@ class PlayerListVM {
     // MARK: Webservice calling to fetch Player list
     // MARK: ================================
 
-    func callWebServiceToFetchPlayerList(searchtext: String) {
+    func fetchPlayerListBasedOn(inputText: String) {
         DispatchQueue.main.async(execute: {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
         })
-        WebAPIManager.sharedWebAPIManager.callWebServiceToFetchDetailsFor(module: .PlayerFinder, queryparam: searchtext) { [weak self] (success, error, data) in
+        WebAPIManager.sharedWebAPIManager.callWebServiceToFetchDetailsFor(module: .PlayerFinder, queryparam: inputText) { [weak self] (success, error, data) in
             if success, let byteData = data, byteData.count > 0 {
                 if let count = self?.searchText?.count, count > 0 {
                     do {
                         let decoder = JSONDecoder()
-                        self?.objPlayerFinder = try decoder.decode(PlayerFinder.self, from: byteData)
+                        let objPlayerFinder = try decoder.decode(PlayerFinder.self, from: byteData)
+                        self?.players = objPlayerFinder.players
                     } catch {
+                        #if DEBUG
                         print(error.localizedDescription)
-                        self?.clearPlayerInfo()
+                        #endif
+                        self?.clearPlayers()
                     }
                 } else {
-                    self?.clearPlayerInfo()
+                    self?.clearPlayers()
                 }
             } else {
-                self?.clearPlayerInfo()
+                self?.clearPlayers()
+                #if DEBUG
                 print(error as Any)
+                #endif
             }
             DispatchQueue.main.async(execute: {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
@@ -75,14 +80,12 @@ class PlayerListVM {
         }
     }
     
-    private func clearPlayerInfo() {
-        self.objPlayerFinder?.players?.removeAll()
-        self.objPlayerFinder?.players = nil
-        self.objPlayerFinder = nil
+    private func clearPlayers() {
+        self.players?.removeAll()
+        self.players = nil
     }
     
     deinit {
-        objPlayerFinder?.players?.removeAll()
-        objPlayerFinder = nil
+        clearPlayers()
     }
 }

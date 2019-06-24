@@ -14,18 +14,18 @@ import Foundation
 
 struct Provider: Codable {
     var pubDate: String?
-    var url: String?
+    var providerURL: String?
     
     private enum CodingKeys: String, CodingKey {
         case pubDate
-        case url
+        case providerURL = "url"
     }
     
     func encode(to encoder: Encoder) throws {
         var values = encoder.container(keyedBy: CodingKeys.self)
         do {
             try values.encodeIfPresent(pubDate, forKey: .pubDate)
-            try values.encodeIfPresent(url, forKey: .url)
+            try values.encodeIfPresent(providerURL, forKey: .providerURL)
         } catch {
             print("An error occurred at Provider encoding due to \(error.localizedDescription)")
             throw error
@@ -36,9 +36,11 @@ struct Provider: Codable {
         do {
             let values = try decoder.container(keyedBy: CodingKeys.self)
             pubDate = try? values.decode(String.self, forKey: .pubDate)
-            url = try? values.decode(String.self, forKey: .url)
+            providerURL = try? values.decode(String.self, forKey: .providerURL)
         } catch {
+            #if DEBUG
             print("An error occurred at Provider decoding due to \(error.localizedDescription)")
+            #endif
             throw error
         }
     }
@@ -49,13 +51,11 @@ struct Provider: Codable {
 // MARK: ================================
 
 struct PlayerFinder: Codable {
-    var ttl: NSNumber?
     var provider: Provider?
     var credits: NSNumber?
     var players: [Player]?
     
     private enum CodingKeys: String, CodingKey {
-        case ttl
         case provider
         case credits = "creditsLeft"
         case players = "data"
@@ -64,12 +64,13 @@ struct PlayerFinder: Codable {
     func encode(to encoder: Encoder) throws {
         var values = encoder.container(keyedBy: CodingKeys.self)
         do {
-            try values.encodeIfPresent(ttl?.intValue, forKey: .ttl)
             try values.encodeIfPresent(provider, forKey: .provider)
             try values.encodeIfPresent(credits?.intValue, forKey: .credits)
             try values.encodeIfPresent(players, forKey: .players)
         } catch {
+            #if DEBUG
             print("An error occurred at Player encoding due to \(error.localizedDescription)")
+            #endif
             throw error
         }
     }
@@ -77,14 +78,14 @@ struct PlayerFinder: Codable {
     init(from decoder: Decoder) throws {
         do {
             let values = try decoder.container(keyedBy: CodingKeys.self)
-            let tmpttl = try? values.decode(Int.self, forKey: .ttl)
-            ttl = NSNumber(value: tmpttl ?? 0)
             provider = try? values.decode(Provider.self, forKey: .provider)
             let tmpcredits = try? values.decode(Int.self, forKey: .credits)
             credits = NSNumber(value: tmpcredits ?? 0)
             players = try? values.decode([Player].self, forKey: .players)
         } catch {
+            #if DEBUG
             print("An error occurred at Player decoding due to \(error.localizedDescription)")
+            #endif
             throw error
         }
     }

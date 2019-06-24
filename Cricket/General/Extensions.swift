@@ -17,6 +17,13 @@ extension String {
     var trimmedString: String { return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) }
     
     var length: Int { return self.count }
+    
+    /**
+     To map the string with localised synonym.
+     */
+    func localised() -> String {
+        return NSLocalizedString(self, comment: "")
+    }
 }
 
 // MARK: - ================================

@@ -15,7 +15,7 @@ import UIKit
 
 extension PlayerDetailsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        if playerDetailVM.arrPlayerProfile == nil || playerDetailVM.arrPlayerProfile?.count == 0 {
+        if playerDetailViewModel.arrPlayerProfileKeyValues == nil || playerDetailViewModel.arrPlayerProfileKeyValues?.count == 0 {
             return 0
         } else {
             return 3
@@ -24,31 +24,30 @@ extension PlayerDetailsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return playerDetailVM.arrPlayerProfile?.count ?? 0
+            return playerDetailViewModel.arrPlayerProfileKeyValues?.count ?? 0
         } else if section == 1 {
-            return playerDetailVM.arrBowling?.count ?? 0
+            return playerDetailViewModel.arrBowlingKeyValues?.count ?? 0
         } else {
-            return playerDetailVM.arrBatting?.count ?? 0
+            return playerDetailViewModel.arrBattingKeyValues?.count ?? 0
         }
     }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
-    }
-    
+        
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return Constants.AppKeys.biography
+            return "biography".localised()
         } else if section == 1 {
-            return Constants.AppKeys.bowling_stats
+            return "bowling_stats".localised()
         } else {
-            return Constants.AppKeys.bating_stats
+            return "batting_stats".localised()
         }
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.white
+        if let font = header.textLabel?.font {
+            header.textLabel?.font = UIFont(name: font.familyName, size: font.pointSize + 5.0)
+        }
         view.tintColor = UIColor.orange
     }
     
@@ -74,13 +73,13 @@ extension PlayerDetailsViewController: UITableViewDataSource {
         var dictInfo: [String: String]?
         if indexPath.section == 0 {
             // Biography section
-            dictInfo = playerDetailVM.arrPlayerProfile?[indexPath.row]
+            dictInfo = playerDetailViewModel.arrPlayerProfileKeyValues?[indexPath.row]
         } else if indexPath.section == 1 {
             // Bowling Info section
-            dictInfo = playerDetailVM.arrBowling?[indexPath.row]
+            dictInfo = playerDetailViewModel.arrBowlingKeyValues?[indexPath.row]
         } else {
             // Batting Info section
-            dictInfo = playerDetailVM.arrBatting?[indexPath.row]
+            dictInfo = playerDetailViewModel.arrBattingKeyValues?[indexPath.row]
         }
         cell?.textLabel?.text = dictInfo?.keys.first
         cell?.detailTextLabel?.text = dictInfo?.values.first

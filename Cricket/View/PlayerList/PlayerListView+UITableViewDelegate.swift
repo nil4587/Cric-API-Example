@@ -1,8 +1,8 @@
 //
-//  PlayerDetailView+UITableViewDelegate.swift
+//  PlayerListView+UITableViewDelegate.swift
 //  Cricket
 //
-//  Created by Nileshkumar Mukeshbhai Prajapati on 21/06/19.
+//  Created by Nileshkumar Mukeshbhai Prajapati on 20/06/19.
 //  Copyright © 2019 Saturn. All rights reserved.
 //
 
@@ -13,7 +13,7 @@ import UIKit
 // MARK: UITableView Delegate Methods
 // MARK: ================================
 
-extension PlayerDetailsViewController: UITableViewDelegate {
+extension PlayerListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -24,6 +24,7 @@ extension PlayerDetailsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        self.performSegue(withIdentifier: Constants.AppSegues.fromPlayerListToDetail, sender: indexPath)
     }
 }
 

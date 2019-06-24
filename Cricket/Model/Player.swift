@@ -13,24 +13,26 @@ import Foundation
 // MARK: ================================
 
 struct Player: Codable {
-    var fname: String?
-    var name: String?
-    var pid: NSNumber?
+    var fullName: String?
+    var shortName: String?
+    var playerId: NSNumber?
     
     private enum CodingKeys: String, CodingKey {
-        case fname = "fullName"
-        case name
-        case pid
+        case fullName = "fullName"
+        case shortName = "name"
+        case playerId = "pid"
     }
     
     func encode(to encoder: Encoder) throws {
         var values = encoder.container(keyedBy: CodingKeys.self)
         do {
-            try values.encodeIfPresent(fname, forKey: .fname)
-            try values.encodeIfPresent(name, forKey: .name)
-            try values.encodeIfPresent(pid?.intValue, forKey: .pid)
+            try values.encodeIfPresent(fullName, forKey: .fullName)
+            try values.encodeIfPresent(shortName, forKey: .shortName)
+            try values.encodeIfPresent(playerId?.intValue, forKey: .playerId)
         } catch {
+            #if DEBUG
             print("An error occurred at Player encoding due to \(error.localizedDescription)")
+            #endif
             throw error
         }
     }
@@ -38,12 +40,14 @@ struct Player: Codable {
     init(from decoder: Decoder) throws {
         do {
             let values = try decoder.container(keyedBy: CodingKeys.self)
-            fname = try? values.decode(String.self, forKey: .fname)
-            name = try? values.decode(String.self, forKey: .name)
-            let tmppid = try? values.decode(Int.self, forKey: .pid)
-            pid = NSNumber(value: tmppid ?? 0)
+            fullName = try? values.decode(String.self, forKey: .fullName)
+            shortName = try? values.decode(String.self, forKey: .shortName)
+            let tmpPlayerId = try? values.decode(Int.self, forKey: .playerId)
+            playerId = NSNumber(value: tmpPlayerId ?? 0)
         } catch {
+            #if DEBUG
             print("An error occurred at Player decoding due to \(error.localizedDescription)")
+            #endif
             throw error
         }
     }

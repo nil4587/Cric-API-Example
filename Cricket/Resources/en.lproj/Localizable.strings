@@ -1,0 +1,68 @@
+/* 
+  Localizable.strings
+  Cricket
+
+  Created by Nilesh Prajapati on 24/06/19.
+  Copyright © 2019 Saturn. All rights reserved.
+*/
+
+// API Manager
+"invalid_url" = "Invalid request url";
+"api_something_went_wrong" = "Something went wrong..!! Please try again..!!";
+
+// Players listing screen
+"player_list_title" = "PLAYERS";
+"no_record_found" = "No record found.";
+"player_id" = "Player ID";
+
+// Bowling Statistics title keys
+"bwl_tenWckts" = "10";
+"bwl_fiveWckts" = "5Wickets";
+"bwl_fourWckts" = "4Wickets";
+"bwl_strikeRate" = "Strike Rate";
+"bwl_economy" = "Bowling Economy";
+"bwl_bbm" = "Best Bowling in Match";
+"bwl_bbi" = "Best Bowling in Innings";
+"bwl_wickets" = "Total Wickets";
+"bwl_balls" = "Balls";
+
+// Batting Statistics title keys
+"bat_fifty" = "50";
+"bat_hundreds" = "100";
+"bat_stumps" = "Stumps";
+"bat_catches" = "Catches";
+"bat_sixes" = "6's";
+"bat_boundary" = "4's";
+"bat_ball_faced" = "Balls Faced";
+"bat_highest_score" = "Highest Score";
+"bat_not_out" = "Not Out";
+
+// Bowling & Batting Statistics Common parameters
+"strike_rate" = "Strike Rate";
+"average" = "Average";
+"runs" = "Runs";
+"innings" = "Innings";
+"matches" = "Matches";
+
+// Player details screen's section headers
+"biography" = "Biography";
+"bowling_stats" = "Bowling Performance - as in the API";
+"batting_stats" = "Batting Performance - as in the API";
+
+// Player Bowling & Batting Info Title Keys
+"listA" = "ListA";
+"first_class" = "First Class";
+"t20s" = "T20s";
+"odis" = "ODIs";
+"tests" = "Tests";
+
+// Player biography keys
+"fullname" = "Full Name";
+"born" = "Born";
+"age" = "Age";
+"country" = "Country";
+"role" = "Role";
+"battingstyle" = "Batting Style";
+"bowlingstyle" = "Bowling Style";
+"majorteams" = "Major Teams Affiliated With";
+"profile" = "Other Details";

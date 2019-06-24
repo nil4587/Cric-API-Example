@@ -24,11 +24,12 @@
 		C4D4B0D922BAB3D90060DC00 /* PlayerFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D4B0D822BAB3D90060DC00 /* PlayerFinder.swift */; };
 		C4D4B0DE22BAB8F30060DC00 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D4B0DD22BAB8F30060DC00 /* BaseViewController.swift */; };
 		C4D4B0E022BAB95C0060DC00 /* PlayerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D4B0DF22BAB95C0060DC00 /* PlayerDetailsViewController.swift */; };
-		C4D4B0E222BABA0C0060DC00 /* PlayerListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D4B0E122BABA0C0060DC00 /* PlayerListVM.swift */; };
-		C4D4B0E422BABA1B0060DC00 /* PlayerDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D4B0E322BABA1B0060DC00 /* PlayerDetailsVM.swift */; };
+		C4D4B0E222BABA0C0060DC00 /* PlayerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D4B0E122BABA0C0060DC00 /* PlayerListViewModel.swift */; };
+		C4D4B0E422BABA1B0060DC00 /* PlayerDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D4B0E322BABA1B0060DC00 /* PlayerDetailsViewModel.swift */; };
 		C4D4B0E622BABDD40060DC00 /* PlayerListView+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D4B0E522BABDD40060DC00 /* PlayerListView+UITableViewDataSource.swift */; };
 		C4D4B0E822BABF670060DC00 /* PlayerListView+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D4B0E722BABF670060DC00 /* PlayerListView+UITableViewDelegate.swift */; };
 		C4D4B0EA22BAC6CC0060DC00 /* PlayerDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D4B0E922BAC6CC0060DC00 /* PlayerDetails.swift */; };
+		C4D75A2E22C0FD7E0061CE1A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C4D75A3022C0FD7E0061CE1A /* Localizable.strings */; };
 		C4DB237822B9115B00B43D7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4DB237722B9115B00B43D7E /* Assets.xcassets */; };
 		C4DB238622B9115B00B43D7E /* CricketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB238522B9115B00B43D7E /* CricketTests.swift */; };
 		C4DB239122B9115C00B43D7E /* CricketUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB239022B9115C00B43D7E /* CricketUITests.swift */; };
@@ -70,11 +71,12 @@
 		C4D4B0D822BAB3D90060DC00 /* PlayerFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerFinder.swift; sourceTree = "<group>"; };
 		C4D4B0DD22BAB8F30060DC00 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C4D4B0DF22BAB95C0060DC00 /* PlayerDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsViewController.swift; sourceTree = "<group>"; };
-		C4D4B0E122BABA0C0060DC00 /* PlayerListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListVM.swift; sourceTree = "<group>"; };
-		C4D4B0E322BABA1B0060DC00 /* PlayerDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsVM.swift; sourceTree = "<group>"; };
+		C4D4B0E122BABA0C0060DC00 /* PlayerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListViewModel.swift; sourceTree = "<group>"; };
+		C4D4B0E322BABA1B0060DC00 /* PlayerDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsViewModel.swift; sourceTree = "<group>"; };
 		C4D4B0E522BABDD40060DC00 /* PlayerListView+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerListView+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		C4D4B0E722BABF670060DC00 /* PlayerListView+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerListView+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		C4D4B0E922BAC6CC0060DC00 /* PlayerDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetails.swift; sourceTree = "<group>"; };
+		C4D75A2F22C0FD7E0061CE1A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C4DB236D22B9115400B43D7E /* Cricket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cricket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4DB237722B9115B00B43D7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4DB237C22B9115B00B43D7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -123,9 +125,9 @@
 		C45E594F22B934E300DC23C5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C4D4B0DB22BAB89E0060DC00 /* PlayerListVC */,
-				C4D4B0DA22BAB89E0060DC00 /* PlayerDetailsVC */,
-				C4D4B0DC22BAB8C90060DC00 /* BaseVC */,
+				C4D4B0DB22BAB89E0060DC00 /* PlayerList */,
+				C4D4B0DA22BAB89E0060DC00 /* PlayerDetails */,
+				C4D4B0DC22BAB8C90060DC00 /* BaseView */,
 				C45E595022B934E300DC23C5 /* LaunchScreen.storyboard */,
 				C45E595222B934E300DC23C5 /* Main.storyboard */,
 			);
@@ -147,8 +149,8 @@
 		C45E595722B9350E00DC23C5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				C4D4B0E122BABA0C0060DC00 /* PlayerListVM.swift */,
-				C4D4B0E322BABA1B0060DC00 /* PlayerDetailsVM.swift */,
+				C4D4B0E122BABA0C0060DC00 /* PlayerListViewModel.swift */,
+				C4D4B0E322BABA1B0060DC00 /* PlayerDetailsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -158,6 +160,7 @@
 			children = (
 				C4DB237C22B9115B00B43D7E /* Info.plist */,
 				C4DB237722B9115B00B43D7E /* Assets.xcassets */,
+				C4D75A3022C0FD7E0061CE1A /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -174,32 +177,32 @@
 			path = General;
 			sourceTree = "<group>";
 		};
-		C4D4B0DA22BAB89E0060DC00 /* PlayerDetailsVC */ = {
+		C4D4B0DA22BAB89E0060DC00 /* PlayerDetails */ = {
 			isa = PBXGroup;
 			children = (
 				C4D4B0DF22BAB95C0060DC00 /* PlayerDetailsViewController.swift */,
 				C41CE7FD22BC0BD900F8AEEC /* PlayerDetailView+UITableViewDataSource.swift */,
 				C41CE7FF22BC1A3300F8AEEC /* PlayerDetailView+UITableViewDelegate.swift */,
 			);
-			path = PlayerDetailsVC;
+			path = PlayerDetails;
 			sourceTree = "<group>";
 		};
-		C4D4B0DB22BAB89E0060DC00 /* PlayerListVC */ = {
+		C4D4B0DB22BAB89E0060DC00 /* PlayerList */ = {
 			isa = PBXGroup;
 			children = (
 				C45E595922B9354E00DC23C5 /* PlayerListViewController.swift */,
 				C4D4B0E522BABDD40060DC00 /* PlayerListView+UITableViewDataSource.swift */,
 				C4D4B0E722BABF670060DC00 /* PlayerListView+UITableViewDelegate.swift */,
 			);
-			path = PlayerListVC;
+			path = PlayerList;
 			sourceTree = "<group>";
 		};
-		C4D4B0DC22BAB8C90060DC00 /* BaseVC */ = {
+		C4D4B0DC22BAB8C90060DC00 /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
 				C4D4B0DD22BAB8F30060DC00 /* BaseViewController.swift */,
 			);
-			path = BaseVC;
+			path = BaseView;
 			sourceTree = "<group>";
 		};
 		C4DB236422B9115300B43D7E = {
@@ -361,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C45E595522B934E300DC23C5 /* Main.storyboard in Resources */,
+				C4D75A2E22C0FD7E0061CE1A /* Localizable.strings in Resources */,
 				C4DB237822B9115B00B43D7E /* Assets.xcassets in Resources */,
 				C45E595422B934E300DC23C5 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -391,7 +395,7 @@
 				C41CE80022BC1A3300F8AEEC /* PlayerDetailView+UITableViewDelegate.swift in Sources */,
 				C4D4B0D922BAB3D90060DC00 /* PlayerFinder.swift in Sources */,
 				C4D4B0EA22BAC6CC0060DC00 /* PlayerDetails.swift in Sources */,
-				C4D4B0E422BABA1B0060DC00 /* PlayerDetailsVM.swift in Sources */,
+				C4D4B0E422BABA1B0060DC00 /* PlayerDetailsViewModel.swift in Sources */,
 				C4D4B0D522BA9C5E0060DC00 /* WebAPIManager.swift in Sources */,
 				C4D4B0E822BABF670060DC00 /* PlayerListView+UITableViewDelegate.swift in Sources */,
 				C45E595C22B9354E00DC23C5 /* AppDelegate.swift in Sources */,
@@ -405,7 +409,7 @@
 				C4BC7D4722BCB1E8005C179F /* Utils.swift in Sources */,
 				C4D4B0D022BA9AA20060DC00 /* Enumerations.swift in Sources */,
 				C41CE7FC22BBEA6F00F8AEEC /* Batting.swift in Sources */,
-				C4D4B0E222BABA0C0060DC00 /* PlayerListVM.swift in Sources */,
+				C4D4B0E222BABA0C0060DC00 /* PlayerListViewModel.swift in Sources */,
 				C41CE7FE22BC0BDA00F8AEEC /* PlayerDetailView+UITableViewDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,6 +460,14 @@
 				C45E595322B934E300DC23C5 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C4D75A3022C0FD7E0061CE1A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C4D75A2F22C0FD7E0061CE1A /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -512,7 +524,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -566,7 +578,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;

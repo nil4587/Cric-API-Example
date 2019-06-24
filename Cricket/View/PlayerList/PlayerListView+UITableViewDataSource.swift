@@ -15,12 +15,12 @@ import UIKit
 
 extension PlayerListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let count = playerListVM.objPlayerFinder?.players?.count, count > 0 {
+        if let count = playerListViewModel.players?.count, count > 0 {
             tableView.backgroundView = nil
             return count
         } else {
             let title = UILabel(frame: tableView.bounds)
-            title.text = "No record found."
+            title.text = "no_record_found".localised()
             title.textAlignment = .center
             tableView.backgroundView = title
             return 0
@@ -39,9 +39,9 @@ extension PlayerListViewController: UITableViewDataSource {
             cell?.detailTextLabel?.textColor = UIColor.gray
             cell?.textLabel?.textColor = UIColor.brown
         }
-        let player = playerListVM.objPlayerFinder?.players?[indexPath.row]
-        cell?.textLabel?.text = player?.name
-        cell?.detailTextLabel?.text = String(format: "PID : %d", player?.pid?.intValue ?? 0)
+        let player = playerListViewModel.players?[indexPath.row]
+        cell?.textLabel?.text = player?.shortName
+        cell?.detailTextLabel?.text = String(format: "\("player_id".localised()) : %d", player?.playerId?.intValue ?? 0)
         cell?.accessoryType = .disclosureIndicator
         return cell!
     }

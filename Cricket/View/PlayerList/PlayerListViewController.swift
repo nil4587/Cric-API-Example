@@ -10,10 +10,15 @@ import UIKit
 
 final class PlayerListViewController: BaseViewController {
 
-    @IBOutlet weak private var tblView: UITableView!
-    @IBOutlet weak private var searchbar: UISearchBar!
+    @IBOutlet weak private var tableView: UITableView!
+    @IBOutlet weak private var searchBar: UISearchBar!
 
-    let playerListVM = PlayerListVM()
+    let playerListViewModel = PlayerListViewModel()
+    
+    class func instance() -> PlayerListViewController? {
+        let storyBoard = UIStoryboard(name: Constants.AppViewKeys.mainStoryboardKey, bundle: Bundle.main)
+        return storyBoard.instantiateViewController(withIdentifier: Constants.AppViewKeys.playerListViewKey) as? PlayerListViewController
+    }
     
     // MARK: - ================================
     // MARK: ViewController life cycle
@@ -22,11 +27,13 @@ final class PlayerListViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.title = "PLAYERS"
-        tblView.tableFooterView = UIView()
-        playerListVM.reloadTable = {
+        self.title = "player_list_title".localised()
+        tableView.tableFooterView = UIView()
+        tableView.estimatedRowHeight = 45
+        tableView.rowHeight = UITableView.automaticDimension
+        playerListViewModel.reloadTable = { [weak self] in
             DispatchQueue.main.async(execute: {
-                self.tblView.reloadData()
+                self?.tableView.reloadData()
             })
         }
     }
@@ -43,7 +50,7 @@ final class PlayerListViewController: BaseViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexpath = sender as? IndexPath {
             let destinationContoller = segue.destination as? PlayerDetailsViewController
-            destinationContoller?.playerDetailVM.objPlayer = playerListVM.objPlayerFinder?.players?[indexpath.row]
+            destinationContoller?.playerDetailViewModel.selectedPlayer = playerListViewModel.players?[indexpath.row]
         }
     }
 }
@@ -54,7 +61,7 @@ final class PlayerListViewController: BaseViewController {
 
 extension PlayerListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        playerListVM.searchText = searchText
+        playerListViewModel.searchText = searchText
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -68,6 +75,6 @@ extension PlayerListViewController: UISearchBarDelegate {
 
 extension PlayerListViewController: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        searchbar.resignFirstResponder()
+        searchBar.resignFirstResponder()
     }
 }

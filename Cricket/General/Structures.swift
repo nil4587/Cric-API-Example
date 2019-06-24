@@ -25,7 +25,7 @@ struct AppInfo {
     }
     
     /// A parameter which returns Application version
-    static var appversion: String {
+    static var appVersion: String {
         if let infoDict = Bundle.main.infoDictionary, let version = infoDict["CFBundleShortVersionString"] as? String {
             return version
         } else {
@@ -34,7 +34,7 @@ struct AppInfo {
     }
     
     /// A parameter which returns Build version
-    static var buildversion: String {
+    static var buildVersion: String {
         if let infoDict = Bundle.main.infoDictionary, let version = infoDict["CFBundleVersion"] as? String {
             return version
         } else {
@@ -53,18 +53,18 @@ struct AppInfo {
 
 struct WebService {
     //https://cricapi.com/api/playerFinder?apikey=AVuCBWL7f6bYQNjorItaVxFNdr92&name=Tend
-    static let webapi_key = "AVuCBWL7f6bYQNjorItaVxFNdr92"
-    static let webapi_url = "https://cricapi.com/api"
+    static let webAPI_Key = "AVuCBWL7f6bYQNjorItaVxFNdr92"
+    static let webAPI_URL = "https://cricapi.com/api"
     
     /// A structure which keeps web-service request's keys
     struct WebServiceRequestHeaderKey {
-        static let HTTPMTDGET_KEY = "GET"
-        static let HTTPMTDPOST_KEY = "POST"
-        static let SOAPCONTYPE_KEY = "Content-Type"
-        static let SOAPACCEPT_KEY = "Accept"
+        static let httpMethod_GET_Key = "GET"
+        static let httpMethod_POST_Key = "POST"
+        static let soapHeader_ContentType_Key = "Content-Type"
+        static let soapHeader_Accept_Key = "Accept"
         
         //-- webservice request/response content type
-        static let JSONCONTNT_TYPE = "application/json;charset=UTF-8"
+        static let requestResponseContentType = "application/json;charset=UTF-8"
     }
 }
 
@@ -75,40 +75,19 @@ struct WebService {
 struct Constants {
     // Keys used within the application
     struct AppKeys {
-        static let api_key_title = "apikey"
-        
-        // Player details section
-        static let biography = "Biography :"
-        static let bowling_stats = "Bowling Statistics :"
-        static let bating_stats = "Batting Statistics :"
-        
-        // Player Bowling & Batting Info Title Keys
-        static let listA = "ListA :"
-        static let first_class = "First Class :"
-        static let t20s = "T20s :"
-        static let odis = "ODIs :"
-        static let test = "Tests :"
-        
-        // Player biography keys
-        static let fullname = "Full Name :"
-        static let born = "Born :"
-        static let age = "Age :"
-        static let country = "Country :"
-        static let role = "Role :"
-        static let battingstyle = "Batting Style :"
-        static let bowlingstyle = "Bowling Style :"
-        static let majorteams = "Major Teams:"
-        static let profile = "Profile :"
+        static let webApiKeyTitle = "apikey"
+        static let webApiQueue = "WebAPI_Queue"
     }
     
     // App Views identity keyname
     struct AppViewKeys {
-        static let playerdetailview_key = "PlayerDetailsView"
-        static let playerlistview_key = "PlayerListView"
+        static let playerDetailViewKey = "PlayerDetailsView"
+        static let playerListViewKey = "PlayerListView"
+        static let mainStoryboardKey = "Main"
     }
     
     // Segues indentifier used in application
     struct AppSegues {
-        static let frmplayerlisttodetail = "@frmplayerlisttodetails"
+        static let fromPlayerListToDetail = "@frmplayerlisttodetails"
     }
 }

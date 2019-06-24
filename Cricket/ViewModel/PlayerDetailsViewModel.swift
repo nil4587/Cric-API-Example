@@ -9,29 +9,29 @@
 import Foundation
 import UIKit
 
-class PlayerDetailsVM {
-    var objPlayer: Player?
+class PlayerDetailsViewModel {
+    var selectedPlayer: Player?
     var userimagepath: String?
-    var arrPlayerProfile: [[String: String]]?
-    var arrBowling: [[String: String]]?
-    var arrBatting: [[String: String]]?
+    var arrPlayerProfileKeyValues: [[String: String]]?
+    var arrBowlingKeyValues: [[String: String]]?
+    var arrBattingKeyValues: [[String: String]]?
     var reloadView: (() -> ())?
     
     // MARK: - ================================
     // MARK: Webservice calling to fetch Player details
     // MARK: ================================
     
-    func callWebServiceToFetchPlayerDetais() {
+    func fetchPlayerDetails() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        WebAPIManager.sharedWebAPIManager.callWebServiceToFetchDetailsFor(module: .PlayerStatistics, queryparam: String(format: "%d", objPlayer?.pid?.intValue ?? 0)) {[weak self] (success, error, data) in
+        WebAPIManager.sharedWebAPIManager.callWebServiceToFetchDetailsFor(module: .PlayerStatistics, queryparam: String(format: "%d", selectedPlayer?.playerId?.intValue ?? 0)) {[weak self] (success, error, data) in
             if success, let byteData = data, byteData.count > 0 {
                 do {
                     let decoder = JSONDecoder()
                     let objPlayerDetails = try decoder.decode(PlayerDetails.self, from: byteData)
-                    self?.arrPlayerProfile = objPlayerDetails.returnPlayerInfo()
-                    self?.userimagepath = objPlayerDetails.imageurl
-                    self?.arrBowling = objPlayerDetails.statistics?.returnBowlingInfo()
-                    self?.arrBatting = objPlayerDetails.statistics?.returnBattingInfo()
+                    self?.arrPlayerProfileKeyValues = objPlayerDetails.playerInformations()
+                    self?.userimagepath = objPlayerDetails.imageURL
+                    self?.arrBowlingKeyValues = objPlayerDetails.statistics?.bowlingStatistics()
+                    self?.arrBattingKeyValues = objPlayerDetails.statistics?.battingStatistics()
                     self?.reloadView!()
                 } catch {
                     displayAlert(message: "An error occurred while decoding data due to \(error.localizedDescription)")
@@ -50,12 +50,12 @@ class PlayerDetailsVM {
     }
         
     deinit {
-        objPlayer = nil
-        arrPlayerProfile?.removeAll()
-        arrPlayerProfile = nil
-        arrBowling?.removeAll()
-        arrBowling = nil
-        arrBatting?.removeAll()
-        arrBatting = nil
+        selectedPlayer = nil
+        arrPlayerProfileKeyValues?.removeAll()
+        arrPlayerProfileKeyValues = nil
+        arrBowlingKeyValues?.removeAll()
+        arrBowlingKeyValues = nil
+        arrBattingKeyValues?.removeAll()
+        arrBattingKeyValues = nil
     }
 }

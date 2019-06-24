@@ -21,15 +21,15 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="ZUl-ZK-5qX"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="qoA-EH-VBq"/>
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KN4-lY-ocn">
                                 <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" red="0.96934920550000003" green="0.94187611339999999" blue="0.86974084380000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="DBx-Yn-Svl"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="epJ-CQ-4t8"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="cgv-oz-AKU"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="AEC-1h-yV6"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -47,8 +47,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Jwa-pq-z7h"/>
                     <connections>
-                        <outlet property="searchbar" destination="ucI-uw-BOv" id="aGp-dr-lup"/>
-                        <outlet property="tblView" destination="KN4-lY-ocn" id="bsp-x4-e4T"/>
+                        <outlet property="searchBar" destination="ucI-uw-BOv" id="fwO-vv-6Gk"/>
+                        <outlet property="tableView" destination="KN4-lY-ocn" id="OvD-ex-IVb"/>
                         <segue destination="NHy-fg-ccJ" kind="show" identifier="@frmplayerlisttodetails" id="Lxc-VN-jtz"/>
                     </connections>
                 </viewController>
@@ -80,7 +80,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="530" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="LH0-gD-AxH">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="313" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="LH0-gD-AxH">
                                 <rect key="frame" x="0.0" y="345.5" width="375" height="321.5"/>
                                 <color key="backgroundColor" red="0.96934920550000003" green="0.94187611339999999" blue="0.86974084380000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -108,13 +108,13 @@
                         <viewLayoutGuide key="safeArea" id="S1s-Ma-7ev"/>
                     </view>
                     <connections>
-                        <outlet property="tblView" destination="LH0-gD-AxH" id="WY9-v3-eD6"/>
-                        <outlet property="userImgView" destination="txt-3G-8s7" id="VdQ-cI-P41"/>
+                        <outlet property="playerImageView" destination="txt-3G-8s7" id="hZf-u8-Pha"/>
+                        <outlet property="tableView" destination="LH0-gD-AxH" id="6rG-ix-HXS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dce-Zt-Oek" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1466" y="47"/>
+            <point key="canvasLocation" x="1464.8" y="46.326836581709152"/>
         </scene>
     </scenes>
     <resources>
